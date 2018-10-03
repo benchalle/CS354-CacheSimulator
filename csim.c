@@ -94,9 +94,17 @@ void initCache() {
       B = 1<<b;
       //allocate for sets
   cache = malloc(sizeof(cache_line_t*) * S);
+ if(cache == NULL){
+  printf("Error, memory not allocated");
+   exit(EXIT_FAILURE);
+ }
     //allocates for lines
   for(int x = 0; x<S; x++){
     cache[x] = malloc(sizeof(cache_line_t) * E);
+    if(cache == NULL){
+     printf("Error, memory not allocated");
+     exit(EXIT_FAILURE);
+ }
   }
   //for each set and line initialize to 0
   for(int x = 0; x<S; x++){
